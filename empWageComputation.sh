@@ -4,14 +4,14 @@ empRatePerHr=20
 
 attendance=$((RANDOM%3));
 
-if [ $attendance -eq 1 ]
-then
-empHrs=8;
-elif [ $attendance -eq 2 ]
-then
-empHrs=4;
-else
-empHrs=0;
-fi
+case $attendance in 
+   1)
+   empHrs=8;;
+   2)
+   empHrs=4;;
+   *)
+   empHrs=0;;
+esac
+
 salary=$(($empHrs*$empRatePerHr))
 echo "salary=" $salary
