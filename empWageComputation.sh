@@ -7,6 +7,7 @@ totalWorkingHrs=0
 numofWorkingDays=20;
 day=1;
 
+declare -A day
 function calculateWorkingHour() {
    case $attendance in 
       1)
@@ -31,6 +32,9 @@ do
    salary=$(($wHour*$empRatePerHr))
    totalSalary=$(($totalSalary+$salary))
    ((day++));
+echo "Employee Working Days: " ${day[*]}
+echo "Employee Daily Wage: " ${salary[*]}
+echo "Employee Total Wage: " ${totalSalary[*]}
 done
 
 echo "Employee has earned $totalSalary$ in a month(total working hours: $totalWorkingHrs)";
