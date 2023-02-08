@@ -2,9 +2,10 @@ echo "Welcome to Employee Wage Computation Program"
 
 empRatePerHr=20;
 totalSalary=0;
+totalWorkingHrs=0
 numofWorkingDays=20;
-
-for (( day=1; day<=$numofWorkingDays; day++ ))
+day=1;
+while [[ $day -le 20 && $totalWorkingHrs -lt 100 ]]
 do
    attendance=$((RANDOM%3));
 
@@ -16,9 +17,16 @@ do
       *)
       empHrs=0;;
    esac
+totalWorkingHrs=$(($totalWorkingHrs+$empHrs))
 
+if [ $totalWorkingHrs -gt 100 ]
+then
+totalWorkingHrs=$(($totalWorkingHrs-$empHrs))
+break;
+fi
 salary=$(($empHrs*$empRatePerHr))
 totalSalary=$(($totalSalary+$salary))
+((day++))
 done
 
-echo "Employee has earned $totalSalary$ in a month";
+echo "Employee has earned $totalSalary$ in a month(total working hours: $totalWorkingHrs)";
