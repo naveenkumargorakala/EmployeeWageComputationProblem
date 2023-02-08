@@ -1,14 +1,17 @@
 echo "Welcome to Employee Wage Computation Program"
 
-attendance=$((RANDOM%2))
+empRatePerHr=20
+
+attendance=$((RANDOM%3));
+
 if [ $attendance -eq 1 ]
 then
-   echo "Employee is Present"
-empRatePerHr=20
 empHrs=8;
-salary=$(($empHrs*$empRatePerHr))
-echo "salary=: "$salary
+elif [ $attendance -eq 2 ]
+then
+empHrs=4;
 else
-   echo "Employee is Absent"
-   echo "salary= " 0
+empHrs=0;
 fi
+salary=$(($empHrs*$empRatePerHr))
+echo "salary=" $salary
